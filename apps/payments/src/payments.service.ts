@@ -26,7 +26,10 @@ export class PaymentsService {
       payment_method: 'pm_card_visa',
       return_url: 'https://test.com',
     });
-    this.notificationsService.emit('notify_email', { email });
+    this.notificationsService.emit('notify_email', {
+      email,
+      text: `Your payment of $${amount} has completed successfully.`,
+    });
     return paymentIntent;
   }
 }
