@@ -5,14 +5,14 @@ steps:
       [
         'build',
         '-t',
-        'us-east4-docker.pkg.dev/sleepr-378423/reservations/production',
+        'southamerica-east1-docker.pkg.dev/sleepr-428213/reservations/production',
         '-f',
         'apps/reservations/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      ['push', 'us-east4-docker.pkg.dev/sleepr-378423/reservations/production']
+      ['push', 'southamerica-east1-docker.pkg.dev/sleepr-428213/reservations/production']
 
   # Auth
   - name: 'gcr.io/cloud-builders/docker'
@@ -20,13 +20,13 @@ steps:
       [
         'build',
         '-t',
-        'us-east4-docker.pkg.dev/sleepr-378423/auth/production',
+        'southamerica-east1-docker.pkg.dev/sleepr-428213/auth/production',
         '-f',
         'apps/auth/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-east4-docker.pkg.dev/sleepr-378423/auth/production']
+    args: ['push', 'southamerica-east1-docker.pkg.dev/sleepr-428213/auth/production']
 
   # Notifications
   - name: 'gcr.io/cloud-builders/docker'
@@ -34,14 +34,14 @@ steps:
       [
         'build',
         '-t',
-        'us-east4-docker.pkg.dev/sleepr-378423/notifications/production',
+        'southamerica-east1-docker.pkg.dev/sleepr-428213/notifications/production',
         '-f',
         'apps/notifications/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      ['push', 'us-east4-docker.pkg.dev/sleepr-378423/notifications/production']
+      ['push', 'southamerica-east1-docker.pkg.dev/sleepr-428213/notifications/production']
 
   # Payments
   - name: 'gcr.io/cloud-builders/docker'
@@ -49,10 +49,13 @@ steps:
       [
         'build',
         '-t',
-        'us-east4-docker.pkg.dev/sleepr-378423/payments/production',
+        'southamerica-east1-docker.pkg.dev/sleepr-428213/payments/production',
         '-f',
         'apps/payments/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-east4-docker.pkg.dev/sleepr-378423/payments/production']
+    args: ['push', 'southamerica-east1-docker.pkg.dev/sleepr-428213/payments/production']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
