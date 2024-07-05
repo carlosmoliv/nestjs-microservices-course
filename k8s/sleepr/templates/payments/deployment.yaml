@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: payments
+  name: payments
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: payments
+    spec:
+      containers:
+      - image: southamerica-east1-docker.pkg.dev/sleepr-428213/payments/production
+        name: payments
