@@ -16,6 +16,11 @@ import {
   ReservationDocument,
   ReservationSchema,
 } from './models/reservation.schema';
+import { GraphQLModule } from '@nestjs/graphql';
+import {
+  ApolloFederationDriver,
+  ApolloFederationDriverConfig,
+} from '@nestjs/apollo';
 
 @Module({
   imports: [
@@ -23,6 +28,12 @@ import {
     DatabaseModule.forFeature([
       { name: ReservationDocument.name, schema: ReservationSchema },
     ]),
+    GraphQLModule.forRoot<ApolloFederationDriverConfig>({
+      driver: ApolloFederationDriver,
+      autoSchemaFile: {
+        federation: 2,
+      },
+    }),
     LoggerModule,
     ConfigModule.forRoot({
       isGlobal: true,
