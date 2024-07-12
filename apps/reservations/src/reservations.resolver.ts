@@ -10,15 +10,15 @@ export class ReservationsResolver {
 
   @Mutation(() => ReservationDocument)
   async createReservation(
-    @Args('creatReservationInput')
+    @Args('createReservationInput')
     createReservationInput: CreateReservationDto,
     @CurrentUser() user: UserDto,
   ) {
     return this.reservationsService.create(createReservationInput, user);
   }
 
-  @Query(() => ReservationDocument, { name: 'reservations' })
-  findAll() {
+  @Query(() => [ReservationDocument], { name: 'reservations' })
+  async findAll() {
     return this.reservationsService.findAll();
   }
 
